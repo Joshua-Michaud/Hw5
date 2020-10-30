@@ -45,3 +45,32 @@ footer {
 .jumbotron{
   background: none;
 }
+
+/*This allows the text to change color when hovering over my sideNav homeworks*/
+.navbar-nav a:hover{
+  color: red;
+}
+
+/* This changes my github icon to white and changes it size */
+nav i {
+    font-size: 36px;
+    color: white;
+}
+
+/* Centers the text and makes the text cursive */
+.nav-link{
+  text-align: center;
+  font-family: cursive;
+}
+
+/* This makes the dropdown have a gray background and make the writing cursive */
+.dropdown-menu{
+  background-color: gray;
+  font-family: cursive;
+}
+
+/* This allows the pictures to be centered inside the carousel */
+.carousel-inner img {
+   height: auto;
+   max-width: 70%;
+}
