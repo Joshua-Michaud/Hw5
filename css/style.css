@@ -2,21 +2,16 @@
 Name: Joshua Michaud
 Email: Joshua_Michaud@student.uml.edu
 Affiliation: Student at Umass Lowell Computer Science
-Date: 10/29/2020
+Date: 10/30/2020
 Description: External style sheet for index.html
-Location: ~jmichaud/public_html/css/style.css
-91.461 Assignment: First Web Page Part 2
+Location: github
+91.461 Assignment: First JavaScript Webpage
 Joshua Michaud, UMass Lowell Computer Science,
 Copyright (c) 2020 by Joshua Michaud. All rights reserved. May be
 freely copied or excerpted for educational purposes with credit to the author.
 */
 
-
-/*This sets my background for the whole web page*/
-*{
-  color: white;
-}
-
+/* sets whole page background to gray */
 body, html{
   background-color: gray;
 
@@ -28,25 +23,6 @@ footer {
   margin-left: 1%;
 }
 
-.container {
-  background-color: #2a758c;
-  min-width: 70%;
-  max-width: 85%;
-}
-
-#errorHelper{
-  background-color: white;
-}
-
-#errorMessages{
-  text-align: center;
-}
-
-.jumbotron{
-  background: none;
-}
-
-/*This allows the text to change color when hovering over my sideNav homeworks*/
 .navbar-nav a:hover{
   color: red;
 }
@@ -63,14 +39,71 @@ nav i {
   font-family: cursive;
 }
 
+
 /* This makes the dropdown have a gray background and make the writing cursive */
 .dropdown-menu{
   background-color: gray;
   font-family: cursive;
 }
 
-/* This allows the pictures to be centered inside the carousel */
-.carousel-inner img {
-   height: auto;
-   max-width: 70%;
+
+#buttons{
+  padding-bottom: 15px;
+}
+
+
+.jumbotron{
+  background: none;
+}
+
+/* sets jumbotron up */
+#JumboHelper{
+  border-radius: 15px;
+  padding-top: 10px;
+  background-color: #2a758c;
+  width: 100%;
+  margin: auto;
+  min-width: 70%;
+  max-width: 85%;
+}
+
+
+#FormHelper{
+  border-radius: 15px;
+  padding-top: 10px;
+  background-color: #2a758c;
+}
+
+#errorHelper{
+  background-color: white;
+  margin: auto;
+}
+
+#errorMessages{
+  text-align: center;
+}
+
+#multTable{
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+tbody > tr > td:first-child,
+tbody > tr:first-child > td {
+  background-color: #0a4456;
+
+  color: red;
+}
+tbody > tr > td {
+  background-color: #292b2c;
+  color: white;
+}
+
+/*https://www.w3schools.com/cssref/pr_pos_overflow.asp*/
+/* Found a nice scroll feature from w3schools */
+.table{
+    overflow: scroll;
+    max-width: 50%;
+    margin: 0 auto;
+    max-height: 400px;
 }

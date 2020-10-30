@@ -2,10 +2,10 @@
 Name: Joshua Michaud
 Email: Joshua_Michaud@student.uml.edu
 Affiliation: Student at Umass Lowell Computer Science
-Date: 10/29/2020
-Description:
-Location:
-91.461 Assignment: First Web Page Part 1
+Date: 10/30/2020
+Description: This webpage is supposed to use JavaScript to create a Multiplication Table with error handling
+Location: github
+91.461 Assignment: First JavaScript Webpage
 Joshua Michaud, UMass Lowell Computer Science,
 Copyright (c) 2020 by Joshua Michaud. All rights reserved. May be
 freely copied or excerpted for educational purposes with credit to the author.
@@ -18,15 +18,15 @@ freely copied or excerpted for educational purposes with credit to the author.
     <meta charset="utf-8">
     <!--This will scale the web page depending on browser size -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!--This will link an external CSS style sheet-->
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <!-- Link to external CSS. -->
     <link rel="stylesheet" href="./css/style.css">
+
      <!-- Linked stylesheet for icons. -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-  
+
     <!--Title of my web page -->
     <title>
       Multiplication Table
@@ -38,38 +38,43 @@ freely copied or excerpted for educational purposes with credit to the author.
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
           </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class = "navbar-nav">
-              <li class="nav-item active">
-                 <a class="nav-link" href="https://cs.uml.edu/~jmichaud/index.html">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    GUI HW ASSIGNMENTS
-                </a>
-                <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
-                    <a class = "dropdown-item" href="#hw1"> HW 1: Intro </a>
-                    <!-- This will link back to this web page for hw 2 -->
-                    <a class = "dropdown-item" href="https://cs.uml.edu/~jmichaud/Hw2/index.html">HW 2: HTML Basics</a>
-                    <a class = "dropdown-item" href="https://cs.uml.edu/~jmichaud/Hw3/index.html">HW 3: CSS</a>
-                    <a class = "dropdown-item" href="https://joshua-michaud.github.io/Personal-Website/">HW 4: Bootstrap</a>
-                    <a class = "dropdown-item" href="#hw5">HW 5: JavaScript</a>
-                    <a class = "dropdown-item" href="#hw6">HW 6: jQuery Part 1</a>
-                    <a class = "dropdown-item" href="#hw7">HW 7: jQuery Part 2</a>
-                    <a class = "dropdown-item" href="#hw8">HW 8: Final Project</a>
-                </div>
-              </li>
-          </ul>
-      </div>
-    </nav>
-      <div class="container" >
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class = "navbar-nav" >
+                  <li class="nav-item">
+                      <a class="nav-link " href="https://github.com/Joshua-Michaud" target="_blank">
+                          <i class="fab fa-github"></i>
+                      </a>
+                  </li>
+                  <li class="nav-item active">
+                      <a class="nav-link" href="https://joshua-michaud.github.io/Personal-Website/">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          GUI HW ASSIGNMENTS
+                      </a>
+                      <div class="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
+                          <a class = "dropdown-item" href="#hw1"> HW 1: Intro </a>
+                          <!-- This will link back to this web page for hw 2 -->
+                          <a class = "dropdown-item" href="https://cs.uml.edu/~jmichaud/Hw2/">HW 2: HTML Basics</a>
+                          <a class = "dropdown-item" href="https://cs.uml.edu/~jmichaud/Hw3/">HW 3: CSS</a>
+                          <a class = "dropdown-item" href="https://joshua-michaud.github.io/Personal-Website/">HW 4: Bootstrap</a>
+                          <a class = "dropdown-item" href="https://joshua-michaud.github.io/Hw5/">HW 5: JavaScript</a>
+                          <a class = "dropdown-item" href="#hw6">HW 6: jQuery Part 1</a>
+                          <a class = "dropdown-item" href="#hw7">HW 7: jQuery Part 2</a>
+                          <a class = "dropdown-item" href="#hw8">HW 8: Final Project</a>
+                     </div>
+                  </li>
+              </ul>
+          </div>
+      </nav>
+      <div class="container" id = "JumboHelper">
           <div class="jumbotron text-center">
               <!--Header of my page to welcome you-->
               <h1>Multiplication Table</h1>
           </div>
       </div>
 
-      <div class="container text-center">
+      <div class="container text-center" id = "FormHelper">
         <h2>Please Enter Table Dimensions</h2>
           <form  onsubmit="return false">
               <div class="form-group col-sm">
@@ -88,20 +93,29 @@ freely copied or excerpted for educational purposes with credit to the author.
                   <label for="multiplicandMax" class="control-label">Multiplicand Y Max</label>
                   <input type="number" class="form-control" id="yMax">
               </div>
-             <div class="form-group col-sm">
-                 <button type="submit" class="btn btn-primary" id = "subButton" onclick = "return variables()">Submit</button>
+             <div class="form-group col-sm" id = "buttons">
+                 <button type="submit" class="btn btn-primary" id = "subButton" onclick ="InputValidation()">Submit</button>
              </div>
           </form>
       </div>
       <div class="container-sm" id = "errorHelper">
-        <div id="errorMessages" class="text-danger font-weight-bold"></div>
+          <div id="errorMessages" class="text-danger font-weight-bold"></div>
       </div>
+
+      <div class="table">
+          <table id="multTable">
+          </table>
+      </div>
+
 
       <footer class = "text-center">
           <p>Copyright &copy; 2020 by Joshua Michaud. All rights reserved.</p>
       </footer>
+
       <script src="js/script.js"></script>
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
    </body>
 </html>

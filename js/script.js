@@ -1,94 +1,98 @@
-var error = document.getElementById("errorMessages");
+/*
+Name: Joshua Michaud
+Email: Joshua_Michaud@student.uml.edu
+Affiliation: Student at Umass Lowell Computer Science
+Date: 10/30/2020
+Description: External JavaScript for index.html
+Location: github
+91.461 Assignment: First JavaScript Webpage
+Joshua Michaud, UMass Lowell Computer Science,
+Copyright (c) 2020 by Joshua Michaud. All rights reserved. May be
+freely copied or excerpted for educational purposes with credit to the author.
+*/
 
 
-function variables(){
+function InputValidation(){
 
-var xStart = Number(document.getElementById("xMin").value);
-var xEnd = Number(document.getElementById("xMax").value);
-var yStart = Number(document.getElementById("yMin").value);
-var yEnd = Number(document.getElementById("yMax").value);
-var lengthY = Math.abs(xEnd - xStart);
-var lengthX = Math.abs(yEnd - yStart);
-var vecArray = {};
-var xIndex = xStart;
-var yIndex = yStart;
-var xarray = [];
-var yarray = [];
+    let xStart = parseInt(document.getElementById("xMin").value);
+    var xEnd = parseInt(document.getElementById("xMax").value);
+    var yStart = parseInt(document.getElementById("yMin").value);
+    var yEnd = parseInt(document.getElementById("yMax").value);
+    //clears the Multiplication Table
+    document.getElementById("multTable").innerHTML = "";
+    //clears the Error messages
+    document.getElementById("errorMessages").innerHTML = "";
+
+    //test to see if all fields have a input value
+    if (!xStart || !xEnd || !yStart || !yEnd) {
+        document.getElementById("errorMessages").innerHTML =
+       "One or more of the values you entered is empty.<br>Please make sure all values have been filled.<br>";
+        return;
+    }
+
+    //This if-else statement will test if each form input it a number
+    if(isNaN(xStart) || isNaN(xEnd) || isNaN(yStart) || isNaN(yEnd)){
+        //empty
+    }
 
 
-if(isNaN(xStart)){
-  //empty isNaN give error message and will not allow values other than integers into form
-  var message = "Input Value for X Min is not a integer"
-  error.textContent = message;
+    if(xStart > xEnd)
+    {
+        document.getElementById("errorMessages").innerHTML = "X Min should be lower than X Max";
+        return;
+    }
+
+
+    if(yStart > yEnd)
+    {
+        document.getElementById("errorMessages").innerHTML = "Y Min should be lower than Y Max";
+        return;
+    }
+
+    //if-else statement to see if any input is below -50
+    if(xStart < -50 || yStart < -50 || xEnd < -50 || yEnd < -50 || xStart > xEnd) {
+        //give error message if input is below -50 for any input
+        document.getElementById("errorMessages").innerHTML = "Input value is Less than -50";
+        return;
+    }
+    //if-else statement to see if any input is above 50
+    else if (xStart > 50 || xEnd > 50 || yStart > 50 || yEnd > 50) {
+        //give error message if input is greater than 50 for any input
+        document.getElementById("errorMessages").innerHTML = "Input Value is Greater than 50";
+        return;
+    }
+    else {
+        //clears error messages when correct input is entered
+        document.getElementById("errorMessages").innerHTML = "";
+    }
+//calls function to create table
+createTable(xStart, xEnd, yStart, yEnd);
 }
-else if (isNaN(xEnd)) {
-  //empty
-  var message = "Input Value for X Max is not a integer"
-  error.textContent = message;
-}
-else if (isNaN(yStart)) {
-  //empty
-  var message = "Input Value for Y Min is not a integer"
-  error.textContent = message;
-}
-else if (isNaN(yEnd)) {
-  //empty
-  var message = "Input Value for Y Max is not a integer"
-  error.textContent = message;
-}
-
-if(xStart < -50 || yStart < -50 || xEnd < -50 || yEnd < -50) {
-    //give error message if input is below -50 for any input
-    var message = "Input value is Lower below -50";
-    error.textContent = message;
-}
-else if (xStart > 50 || xEnd > 50 || yStart > 50 || yEnd > 50) {
-  //give error message if input is greater than 50 for any input
-  var message = "Input Value is Greater than 50"
-  error.textContent = message;
-}
-else {
-  //clears error messages when correct input is entered
-  error.textContent = "";
-}
 
 
 
+function createTable(xStart, xEnd, yStart, yEnd){
+  var i, j;
+  var table = "";
 
 
-var x = document.createElement("TABLE");
-x.setAttribute("id", "myTable");
-document.body.appendChild(x);
-
-for(var i = xStart; i < xEnd; i++){
-  xarray[i] = i;
-}
-
-for(var j = yStart; j < yEnd; j++){
-  yarray[j] = j;
-}
-
-for(var k = 0; k <= lengthY; k++){
-  var arrayTemp = [];
-  for(var l = 0; l <= lengthX; l++){
-    var value = xIndex * yIndex;
-    arrayTemp[l] = value;
-    xIndex++;
+  // Creates table
+  for (j = xStart - 1; j <= xEnd; j++) {
+      table += "<tr>";
+    if (j == xStart - 1) {
+        table += "<td></td>";
+      for (i = yStart; i <= yEnd; i++) {
+          table += "<td>" + i + "</td>";
+      }
+    }
+    else {
+        table += "<td>" + j + "</td>";
+        for (i = yStart; i <= yEnd; i++) {
+            table += "<td>" + i * j + "</td>";
+        }
+    }
+    table += "</tr>";
   }
-  vecArray[k] = arrayTemp;
-  xIndex = xStart;
-  yIndex++;
-}
-
-
-console.log(vecArray);
-//swap
-//calculations
-//first array times second array
-console.log(xStart);
-console.log(xEnd);
-console.log(yStart);
-console.log(yEnd);
-
-
+  // Insert table
+  document.getElementById("multTable").innerHTML = table;
 }
